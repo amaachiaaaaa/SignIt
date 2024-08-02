@@ -9,20 +9,15 @@ export const addQuestion = async (req, res) => {
       const { error, value } = questionSchema.validate(req.body);
       if (error) {
         return res.status(400).send(error.details[0].message);
-      }
-      const id = req.session?.quiz?.id || req?.quiz?.id; 
+      } 
       
-      const quiz = await quizModel.findById(id);
-      if (!quiz) {
-        return res.status(404).send('Quiz not found');
-      }
       // create question with the validated data
   
       const newQuestion = await questionModel.create({...value, user:user.id});
   
     //   add and save new question
       user.question.push(newQuestion); 
-      await user.save(); // Save the updated question
+      await question.save(); // Save the updated question
   
       res.status(201).json({ question: newQuestion ,
         message:"Question added sucessfully",

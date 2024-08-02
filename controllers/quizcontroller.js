@@ -9,15 +9,7 @@ export const addQuiz = async (req, res) => {
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
-
-        // Finding a quiz
-        const id = req.session?.quiz?.id || req?.quiz?.id; // Assuming quiz ID is stored in session
         
-        // Assuming quiz ID is stored in session
-        const quiz = await quizModel.findById(id); // Fetching quiz
-        if (!quiz) {
-            return res.status(404).send('Quiz not found');
-        }
         // Create quiz with the validated data
         const newQuiz = await quizModel.create({...value,user:user.id});
 
