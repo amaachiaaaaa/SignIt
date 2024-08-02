@@ -24,7 +24,7 @@ export const addQuestion = async (req, res) => {
       user.question.push(newQuestion); 
       await user.save(); // Save the updated question
   
-      res.status(201).json({ education: newEducation ,
+      res.status(201).json({ question: newQuestion ,
         message:"Question added sucessfully",
       });
     } catch (error) {
