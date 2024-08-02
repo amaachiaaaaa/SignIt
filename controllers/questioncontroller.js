@@ -16,7 +16,7 @@ export const addQuestion = async (req, res) => {
       const newQuestion = await questionModel.create({...value, user:user.id});
   
     //   add and save new question
-      user.question.push(newQuestion); 
+      quiz.question.push(newQuestion); 
       await question.save(); // Save the updated question
   
       res.status(201).json({ question: newQuestion ,
