@@ -8,6 +8,7 @@ import { quizRouter } from "./routes/quizRoute.js";
 import { beginnerRouter } from "./routes/beginner-route.js";
 import { intermediateRouter } from "./routes/intermediateroute.js";
 import { advancedRouter } from "./routes/advancedroute.js";
+import { passwordRouter } from "./routes/resetPassword.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 
@@ -39,6 +40,7 @@ app.use('api/v1', quizRouter);
 app.use('api/v1', beginnerRouter);
 app.use('api/v1', intermediateRouter);
 app.use('api/v1', advancedRouter);
+app.use('api/v1', passwordRouter)
 
 
  //Listening to Port & Connecting to database
