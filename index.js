@@ -5,7 +5,6 @@ import mongoose from "mongoose";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import { userRouter } from "./routes/user-route.js";
-import { userProfileRouter } from "./routes/userprofileroute.js";
 import { questionRouter } from "./routes/questionRoute.js";
 import { quizRouter } from "./routes/quizRoute.js";
 import { beginnerRouter } from "./routes/beginner-route.js";
@@ -13,6 +12,7 @@ import { intermediateRouter } from "./routes/intermediateroute.js";
 import { advancedRouter } from "./routes/advancedroute.js";
 import { passwordRouter } from "./routes/resetPassword.js";
 import expressOasGenerator from '@mickeymond/express-oas-generator';
+import userProfileRouter from "./routes/userProfileRoute.js"
 
 
 
@@ -47,7 +47,7 @@ app.use(session({
 
 //   using routes
 app.use('/api/v1',userRouter);
-app.use('/api/v1',userProfileRouter);
+app.use('/api/v1', userProfileRouter);
 app.use('api/v1', questionRouter);
 app.use('api/v1', quizRouter);
 app.use('api/v1', beginnerRouter);
