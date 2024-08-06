@@ -7,7 +7,7 @@ const userProfile = new Schema({
     profilePicture: { type: String },
     age: { type: String , required:true},
     sex: { type: String, enum: ['male', 'female'], required:true },
-    dateOfBirth: { type: Date,required:true },
+    dateOfBirth: { type: String,required:true },
     contact: { type: String, required:true },
     address:{type:String, required:true},
     about: { type: String, required:true },
