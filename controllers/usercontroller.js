@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { userModel } from "../models/usermodel.js";
-import { userSchema } from "../Schema/userschema.js";
+import { userSchema } from "../schema/userschema.js";
 
 
 
