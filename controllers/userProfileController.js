@@ -1,6 +1,6 @@
 import { userProfileModel } from "../models/userProfilemodel.js";
 import { userModel } from "../models/usermodel.js";
-import { userProfileSchema } from "../Schema/userprofileschema.js";
+import { userProfileSchema } from "../schema/userprofileschema.js";
 
 // Create or update user profile
 export const addUserProfile = async (req, res) => {
