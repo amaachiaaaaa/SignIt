@@ -1,7 +1,6 @@
 import Joi from "joi";
 
 export const userProfileSchema = Joi.object({
-    user:Joi.ref('User'),
     profilePicture: Joi.string(),
     age: Joi.string().required(),
     sex: Joi.string().valid('male', 'female').required(),
