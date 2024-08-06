@@ -8,7 +8,7 @@ const advancedSchema = new Schema({
     module:{type:String, required:true},
     lesson:{type:String, required:true},
     video:{type:String, required:true},
-    quiz:{type:String, required:true},
+    quiz:{type:String, ref:'Quiz' , required:true},
     finalAssesment:[{type: Types.ObjectId, ref:'FinalAssesment', required:true}]
 },{
     timestamps:true
