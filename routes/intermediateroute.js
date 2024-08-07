@@ -4,8 +4,8 @@ import { addIntermediateLevel, allIntermediateLevel, deleteIntermediateLevel, ge
 
 export const intermediateRouter = Router();
 
-intermediateRouter.post('/intermediate', isAuthenticated,addIntermediateLevel );
-intermediateRouter.get('/intermediate', getIntermediateLevel);
-intermediateRouter.get('/intermediate:id', allIntermediateLevel);
-intermediateRouter.patch('/intermediate:id', isAuthenticated, updateIntermediateLevel);
-intermediateRouter.delete('/intermediate:id', isAuthenticated, deleteIntermediateLevel);
+intermediateRouter.post('/tutorials/intermediate', isAuthenticated,addIntermediateLevel );
+intermediateRouter.get('/tutorials/intermediate', getIntermediateLevel);
+intermediateRouter.get('/tutorials/intermediate:id', allIntermediateLevel);
+intermediateRouter.patch('/tutorials/intermediate:id', isAuthenticated, updateIntermediateLevel);
+intermediateRouter.delete('/tutorials/intermediate:id', isAuthenticated, deleteIntermediateLevel);
