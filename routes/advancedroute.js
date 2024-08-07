@@ -5,10 +5,10 @@ import { addAdvancedLevel, allAdvancedLevel, deleteAdvanceLevel, getAdvancedLeve
 
 export const advancedRouter = Router();
 
-advancedRouter.post('/advanced', isAuthenticated, addAdvancedLevel);
-advancedRouter.get('/advanced', getAdvancedLevel);
-advancedRouter.get('/advanced:id', allAdvancedLevel);
-advancedRouter.patch('/advanced:id', isAuthenticated, updateAdvancedLevel);
-advancedRouter.delete('/advanced:id', isAuthenticated, deleteAdvanceLevel);
+advancedRouter.post('/tutorials/advanced', isAuthenticated, addAdvancedLevel);
+advancedRouter.get('/tutorials/advanced', getAdvancedLevel);
+advancedRouter.get('/tutorials/advanced:id', allAdvancedLevel);
+advancedRouter.patch('/tutorials/advanced:id', isAuthenticated, updateAdvancedLevel);
+advancedRouter.delete('/tutorials/advanced:id', isAuthenticated, deleteAdvanceLevel);
 
 
