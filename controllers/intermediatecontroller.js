@@ -66,7 +66,7 @@ export const addIntermediateLevel = async (req, res) => {
             if (!levelId) {
                 return res.status(401).send('Unauthorized: No level ID found in session or token');
             }
-        consintermediateLevel = await intermediateModel.findOne({ _id: req.params.id,intermediateLevel : levelId });
+        consintermediateLevel = await intermediateModel.findById({ _id: req.params.id,intermediateLevel : levelId });
         if (intermediateLevel) {
           return res.status(404).send('Intermediate Level not found');
         }

@@ -59,7 +59,7 @@ export const getFinalAssesment = async (req, res) => {
         if (!finalAssesmentId) {
             return res.status(401).send('Unauthorized: No Final Assesment ID found in session or token');
         }
-        const finalAssesment = await finalAssesmentModel.findOne({ _id: req.params.id, finalAssesment: finalAssesmentId })
+        const finalAssesment = await finalAssesmentModel.findById({ _id: req.params.id, finalAssesment: finalAssesmentId })
        
         if (!finalAssesmentId) {
             return res.status(404).send(' Final Assesment not found');

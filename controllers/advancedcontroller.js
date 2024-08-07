@@ -65,7 +65,7 @@ export const allAdvancedLevel = async (req, res) => {
           if (!levelId) {
               return res.status(401).send('Unauthorized: No level ID found in session or token');
           }
-      const advancedLevel = await advancedModel.findOne({ _id: req.params.id,advancedLevel : levelId });
+      const advancedLevel = await advancedModel.findById({ _id: req.params.id,advancedLevel : levelId });
       if (!advancedLevel) {
         return res.status(404).send('AdvancedLevel not found');
       }
