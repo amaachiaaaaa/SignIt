@@ -63,7 +63,7 @@ export const addBeginnerLevel = async (req, res) => {
             if (!levelId) {
                 return res.status(401).send('Unauthorized: No level ID found in session or token');
             }
-        const BeginnerLevel = await beginnerModel.findOne({ _id: req.params.id,BeginnerLevel : levelId });
+        const BeginnerLevel = await beginnerModel.findById({ _id: req.params.id,BeginnerLevel : levelId });
         if (!BeginnerLevel) {
           return res.status(404).send('BeginnerLevel not found');
         }

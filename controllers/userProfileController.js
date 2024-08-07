@@ -45,7 +45,7 @@ export const getUserProfile = async (req, res) => {
 
         const id = req.session?.user?.id || req?.user?.id;
 
-        const profile = await userProfileModel.findOne({ user: id }).populate({
+        const profile = await userProfileModel.findById({ user: id }).populate({
             path: 'user',
             select: '-password'
         });
