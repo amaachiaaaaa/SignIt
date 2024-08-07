@@ -14,7 +14,7 @@ const generateOTP = () => {
   return { otpString, hashedOtp };
 };
 
-export const forgotPassword = async (req, res) => {
+export const forgotPassword = async (req, res, next) => {
   const { email } = req.body;
 
   try {
@@ -39,7 +39,7 @@ export const forgotPassword = async (req, res) => {
     });
 
     const mailOptions = {
-      from: "Sign it Suppot <signitsupport.com>", // Your email address
+      from: "Checkka Suppot <checckasupport.com>", // Your email address
       to: user.email,
       subject: "Password Reset",
       text: `Please use the following OTP to complete the process of resetting your password:\n\n${otpString}\n\n. If you did not request this, please ignore this email and your password will remain unchanged.\n`,
@@ -58,6 +58,7 @@ export const forgotPassword = async (req, res) => {
       }
     });
   } catch (error) {
+    // next(error)
     console.log(error);
   }
 };

@@ -48,12 +48,12 @@ app.use(session({
 //   using routes
 app.use('/api/v1',userRouter);
 app.use('/api/v1', userProfileRouter);
-app.use('api/v1', questionRouter);
-app.use('api/v1', quizRouter);
-app.use('api/v1', beginnerRouter);
-app.use('api/v1', intermediateRouter);
-app.use('api/v1', advancedRouter);
-app.use('api/v1', passwordRouter)
+app.use('/api/v1', questionRouter);
+app.use('/api/v1', quizRouter);
+app.use('/api/v1', beginnerRouter);
+app.use('/api/v1', intermediateRouter);
+app.use('/api/v1', advancedRouter);
+app.use('/api/v1', passwordRouter)
 
 
 expressOasGenerator.handleRequests();
