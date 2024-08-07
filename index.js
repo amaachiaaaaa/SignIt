@@ -4,6 +4,7 @@ import 'dotenv/config';
 import mongoose from "mongoose";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import { restartServer } from "./restart_server.js";
 import { userRouter } from "./routes/user-route.js";
 import { questionRouter } from "./routes/questionRoute.js";
 import { quizRouter } from "./routes/quizRoute.js";
@@ -11,6 +12,7 @@ import { beginnerRouter } from "./routes/beginner-route.js";
 import { intermediateRouter } from "./routes/intermediateroute.js";
 import { advancedRouter } from "./routes/advancedroute.js";
 import { passwordRouter } from "./routes/resetPassword.js";
+import { finalAssesmentRouter } from "./routes/finalassesmentroute.js";
 import expressOasGenerator from '@mickeymond/express-oas-generator';
 import userProfileRouter from "./routes/userProfileRoute.js"
 
@@ -22,7 +24,7 @@ const app = express();
 
 expressOasGenerator.handleResponses(app, {
   alwaysServeDocs:true,
-  tags: [ 'Beginner','auth', 'Intermediate','Advanced ','Final Assesment','Question','Quiz','Reset Password', 'Profile',],
+  tags: [ 'Beginner','auth', 'Intermediate','Advanced','FinalAssesment','Question','Quiz', 'Profile',],
  
   mongooseModels: mongoose.modelNames(),
 
@@ -45,6 +47,10 @@ app.use(session({
     })
   }));
 
+  app.get("/api/v1/health", (req, res) => {
+    res.json({ status: "UP" });
+  });
+
 //   using routes
 app.use('/api/v1',userRouter);
 app.use('/api/v1', userProfileRouter);
@@ -54,16 +60,28 @@ app.use('/api/v1', beginnerRouter);
 app.use('/api/v1', intermediateRouter);
 app.use('/api/v1', advancedRouter);
 app.use('/api/v1', passwordRouter)
-
+app.use('/api/v1',finalAssesmentRouter)
 
 expressOasGenerator.handleRequests();
 app.use((req,res) => res.redirect('/api-docs/'));
 
+const reboot = async () => {
+  setInterval(restartServer, process.env.INTERVAL)
+  }
+
+
  //Listening to Port & Connecting to database
- dbconnection();
-
-const port = 6060
-
-app.listen(port, () =>{
-console.log(`Listening on port: ${port}`);
+ dbconnection()
+.then(() => {
+  const PORT = 6060
+  app.listen(PORT, () => {
+      reboot().then(() => {
+      console.log(`Server Restarted`);
+    });
+    console.log(`Server is connected to Port ${PORT}`);
+  });
+})
+.catch((err) => {
+  console.log(err);
+  process.exit(-1);
 });
