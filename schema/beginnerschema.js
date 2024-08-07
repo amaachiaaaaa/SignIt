@@ -8,7 +8,5 @@ export const beginnerSchema = Joi.object({
     module:Joi.string().required(),
     lesson:Joi.string().required(),
     video:Joi.string().required(),
-    quiz:Joi.ref('Quiz'),
-    finalAssesment:Joi.ref('FinalAssesment '),
 });
  
