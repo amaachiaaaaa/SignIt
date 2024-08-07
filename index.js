@@ -22,7 +22,7 @@ const app = express();
 
 expressOasGenerator.handleResponses(app, {
   alwaysServeDocs:true,
-  tags: [ 'Beginner Level','auth', 'Intermediate Level','Advanced Level','Fiinal Assesment','Question','Quiz','Reset Password', 'Profile',],
+  tags: [ 'Beginner','auth', 'Intermediate','Advanced ','Final Assesment','Question','Quiz','Reset Password', 'Profile',],
  
   mongooseModels: mongoose.modelNames(),
 
