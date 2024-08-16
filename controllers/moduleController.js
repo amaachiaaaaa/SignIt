@@ -5,6 +5,11 @@ import { moduleSchema } from "../schema/moduleSchema.js";
 // Create/add a new module
 export const addModule = async (req, res) => {
     try {
+
+      // Only admin can create a module
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({ message: 'Access denied' });
+  }
       const { error, value } = moduleSchema.validate(req.body);
   
           if (error) {
