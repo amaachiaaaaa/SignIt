@@ -4,7 +4,7 @@ import { addBeginnerLevel, allBeginnerLevel, deleteBeginnerLevel, getBeginnerLev
 
 export const beginnerRouter = Router();
 
-beginnerRouter.post('/tutorials/beginner', isAuthenticated , addBeginnerLevel);
+beginnerRouter.post('/tutorials/beginner' , addBeginnerLevel);
 beginnerRouter.get('/tutorials/beginner', getBeginnerLevel);
 beginnerRouter.get('/tutorials/beginner:id', allBeginnerLevel);
 beginnerRouter.patch('/tutorials/beginner:id', isAuthenticated , updateBeginnerLevel);
