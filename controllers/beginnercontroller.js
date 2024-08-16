@@ -11,13 +11,7 @@ export const addBeginnerLevel = async (req, res) => {
           }
   
       const newBeginnerLevel =  await beginnerModel({
-        title,
-        description,
-        type,
-        module,
-        lesson,
-        video,
-        quiz,
+       
       });
       const id = req.session?.level?.id || req?.level?.id
       if (!newBeginnerLevel) {
@@ -29,7 +23,7 @@ export const addBeginnerLevel = async (req, res) => {
        const BeginnerLevel = await beginnerModel.create({...value,user:id});
   
      
-       BeginnerLevel.beginnerModel.push(BeginnerLevel); 
+       BeginnerLevel.beginnerModel.push(BeginnerLevel._id); 
        await BeginnerLevel.save();
    
        // Return the level
