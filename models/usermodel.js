@@ -8,6 +8,7 @@ const userSchema = new Schema({
         email: { type: String,required:true, unique:true},
         password: { type: String, required:true },
         userName: { type: String ,required:true, unique:true},
+        role: { type: String, enum: ['admin', 'user'], default: 'user' },
         resetToken: { type: String },
         resetTokenExpiresAt: { type: Date },
 },{
