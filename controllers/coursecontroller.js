@@ -13,7 +13,7 @@ export const addCourses = async (req, res) => {
     const newCourses = await courseModel({
 
     });
-    const id = req.session?.level?.id || req?.level?.id
+    const id = req.session?.course?.id || req?.course?.id
     if (!newCourses) {
       // console.log(`Level not found for ID: ${levelId}`);
       return res.status(404).send('Level not found');
