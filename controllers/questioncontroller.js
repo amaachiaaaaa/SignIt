@@ -17,7 +17,7 @@ export const addQuestion = async (req, res) => {
   
     //   add and save new question
       quiz.question.push(newQuestion); 
-      await question.save(); // Save the updated question
+      await quiz.save(); // Save the updated question
   
       res.status(201).json({ question: newQuestion ,
         message:"Question added sucessfully",
