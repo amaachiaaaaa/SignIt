@@ -33,8 +33,8 @@ export const addModule = async (req, res) => {
        const module = await moduleModel.create({...value,user:id});
   
      
-       module.moduleModel.push(module); 
-       await module.save();
+       course.module.push(module.id); 
+       await course.save();
    
        // Return the module
        res.status(201).json({ module ,message:"Module Added"});

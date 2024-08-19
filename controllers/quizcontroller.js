@@ -14,8 +14,8 @@ export const addQuiz = async (req, res) => {
         const newQuiz = await quizModel.create({...value,user:user.id});
 
         // Push the new quizzes ID to the quiz
-        user.quizzes.push(newQuiz);
-        await user.save();
+        finalAssesment.quizzes.push(quiz);
+        await finalAssesment.save();
        
         // Return the newly created quiz
         res.status(201).json({ quiz: newQuiz });

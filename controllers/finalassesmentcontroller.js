@@ -46,6 +46,10 @@ export const allFinalAssesment = async (req, res) => {
         res.status(200).json({ finalAssesment: allFinalAssesment ,
             message:"Final Assesment added sucessfully",
         });
+
+        course.finalAssesment.push(finalAssesment.id); 
+        await course.save();
+        
     } catch (error) {
         console.error('Error fetching final Assesment:', error);
         res.status(500).send(error.message);
