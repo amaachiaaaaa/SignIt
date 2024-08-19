@@ -9,15 +9,13 @@ import { restartServer } from "./restart_server.js";
 import { userRouter } from "./routes/user-route.js";
 import { questionRouter } from "./routes/questionRoute.js";
 import { quizRouter } from "./routes/quizRoute.js";
-import { beginnerRouter } from "./routes/beginner-route.js";
-import { intermediateRouter } from "./routes/intermediateroute.js";
-import { advancedRouter } from "./routes/advancedroute.js";
-import { moduleModel } from "./models/module-model.js";
+import { moduleRouter } from "./routes/moduleRoute.js";
+import { courseRouter } from "./routes/courseroute.js";
 import { passwordRouter } from "./routes/resetPassword.js";
 import { finalAssesmentRouter } from "./routes/finalassesmentroute.js";
 import expressOasGenerator from '@mickeymond/express-oas-generator';
 import userProfileRouter from "./routes/userProfileRoute.js"
-import { moduleRouter } from "./routes/moduleRoute.js";
+
 
 
 
@@ -27,7 +25,7 @@ const app = express();
 
 expressOasGenerator.handleResponses(app, {
   alwaysServeDocs: true,
-  tags: ['Beginner', 'auth', 'Intermediate', 'Advanced', 'FinalAssesment', 'Question', 'Quiz', 'Profile','Module'],
+  tags: ['auth', 'Courses', 'FinalAssesment', 'Question', 'Quiz', 'Profile','Module'],
 
   mongooseModels: mongoose.modelNames(),
 
@@ -60,12 +58,10 @@ app.use('/api/v1', userRouter);
 app.use('/api/v1', userProfileRouter);
 app.use('/api/v1', questionRouter);
 app.use('/api/v1', quizRouter);
-app.use('/api/v1', beginnerRouter);
-app.use('/api/v1', intermediateRouter);
-app.use('/api/v1', advancedRouter);
-app.use('/api/v1', passwordRouter)
-app.use('/api/v1', finalAssesmentRouter)
-app.use('/api/v1', moduleRouter)
+app.use('/api/v1', courseRouter);
+app.use('/api/v1', passwordRouter);
+app.use('/api/v1', finalAssesmentRouter);
+app.use('/api/v1', moduleRouter);
 
 expressOasGenerator.handleRequests();
 app.use((req, res) => res.redirect('/api-docs/'));
