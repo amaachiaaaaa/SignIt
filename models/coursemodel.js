@@ -2,7 +2,7 @@ import { model, Schema,Types } from "mongoose";
 import { toJSON } from "@reis/mongoose-to-json";
 
 
-const beginnerSchema = new Schema({
+const courseSchema = new Schema({
     title:{type:String, required:true},
     description:{type:String, required:true},
     type:{type:String, enum: ['Beginner', 'Intermediate', 'Advanced'], required:true},
@@ -12,6 +12,6 @@ const beginnerSchema = new Schema({
     timestamps:true
 })
 
-beginnerSchema.plugin(toJSON);
+courseSchema.plugin(toJSON);
 
-export const beginnerModel = model('Beginner', beginnerSchema)
+export const courseModel = model('Courses', courseSchema)
